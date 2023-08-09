@@ -1,0 +1,80 @@
+#container {
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width: 600px;
+}
+#weather-search-app {
+  margin: 20px;
+}
+#search-form {
+  margin-bottom: 40px;
+}
+#input-search {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 10px;
+  width: 270px;
+  margin-right: 20px;
+  outline: blue;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+#button-search {
+  background-color: blue;
+  border-color: transparent;
+  color: white;
+  border-radius: 3px;
+  padding: 10px;
+  width: 100px;
+  outline: lightgray;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+#button-current {
+  background-color: green;
+  border-color: transparent;
+  color: white;
+  border-radius: 3px;
+  padding: 10px;
+  width: 80px;
+  outline: lightgray;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+#info-city {
+  color: gray;
+  line-height: 4px;
+}
+#weather {
+  font-size: 60px;
+  margin-right: 40px;
+  display: flex;
+}
+#weather-description {
+  color: gray;
+}
+#weather-info {
+  display: flex;
+  line-height: 4px;
+  align-items: center;
+}
+#units {
+  font-size: x-large;
+  vertical-align: super;
+  color: blue;
+  margin-right: 8px;
+}
+
+#country {
+  font-weight: lighter;
+}
+#github-link {
+  text-decoration: none;
+  margin-top: 30px;
+}
+#link {
+  text-align: center;
+  margin-top: 10px;
+}
