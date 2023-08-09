@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <style>
+      #container {
+        border: 1px solid lightgrey;
+        border-radius: 8px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        width: 600px;
+      }
+      #weather-search-app {
+        margin: 20px;
+      }
+      #search-form {
+        margin-bottom: 40px;
+      }
+      #input-search {
+        border: 1px solid lightgray;
+        border-radius: 3px;
+        padding: 10px;
+        width: 270px;
+        margin-right: 20px;
+        outline: blue;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+      }
+      #button-search {
+        background-color: blue;
+        border-color: transparent;
+        color: white;
+        border-radius: 3px;
+        padding: 10px;
+        width: 100px;
+        outline: lightgray;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+      #button-current {
+        background-color: green;
+        border-color: transparent;
+        color: white;
+        border-radius: 3px;
+        padding: 10px;
+        width: 80px;
+        outline: lightgray;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+      #info-city {
+        color: gray;
+        line-height: 4px;
+      }
+      #weather {
+        font-size: 60px;
+        margin-right: 40px;
+        display: flex;
+      }
+      #weather-description {
+        color: gray;
+      }
+      #weather-info {
+        display: flex;
+        line-height: 4px;
+        align-items: center;
+      }
+      #units {
+        font-size: x-large;
+        vertical-align: super;
+        color: blue;
+        margin-right: 8px;
+      }
+
+      #country {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="weather-search-app">
+        <form id="search-form">
+          <input id="input-search" type="text" placeholder="Type a city" />
+          <input id="button-search" type="submit" value="Search" />
+          <input id="button-current" type="click" value="Current" />
+        </form>
+        <h1 id="temp-temp"></h1>
+        <div id="info-city">
+          <h1 id="city">Joburg</h1>
+          <p id="day-time"></p>
+          <p>Partly Cloudy</p>
+        </div>
+        <div id="weather-info">
+          <div id="weather">
+            <p>⛅</p>
+            <p id="temp-info">
+              <span id="temp">30</span>
+              <span id="units"> ℃ </span>
+            </p>
+          </div>
+          <div id="weather-description">
+            <p>Precipitation: 0%</p>
+            <p>Humidity:77%</p>
+            <p>Wind:8 km/h</p>
+          </div>
+          <h3></h3>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function formSearch(event) {
+      event.preventDefault();
+
+      let inputCity = document.querySelector("#input-search");
+
+      let cityElement = document.querySelector("#city");
+      if (inputCity.value) {
+        cityElement.innerHTML = inputCity.value;
+      } else {
+        alert("Error, Please enter city!");
+      }
+
+      let apiKey = "6bfa54f242cbb59343d4e58db578dc61";
+      let city = inputCity.value;
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+      axios.get(url).then(getTemp);
+    }
+
+    let cityForm = document.querySelector("#search-form");
+    cityForm.addEventListener("submit", formSearch);
+
+    function getTemp(response) {
+      let currentTemp = Math.round(response.data.main.temp);
+
+      let searchTemp = document.querySelector("#temp");
+      searchTemp.innerHTML = currentTemp;
+    }
+  </script>
+</html>
